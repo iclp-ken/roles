@@ -1,10 +1,10 @@
 <?php
 
-namespace Ultraware\Roles\Contracts;
+namespace Marievych\Roles\Contracts;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Ultraware\Roles\Models\Permission;
+use Marievych\Roles\Models\Permission;
 
 interface RoleHasRelations
 {
