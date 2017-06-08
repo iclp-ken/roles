@@ -1,6 +1,6 @@
 <?php
 
-namespace Ultraware\Roles\Models;
+namespace Marievych\Roles\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Marievych\Roles\Contracts\RoleHasRelations as RoleHasRelationsContract;
