@@ -157,7 +157,7 @@ trait HasRoleAndPermission
     /**
      * Sync roles for a user.
      *
-     * @param array|\Ultraware\Roles\Models\Role[]|\Illuminate\Database\Eloquent\Collection $roles
+     * @param array|\Marievych\Roles\Models\Role[]|\Illuminate\Database\Eloquent\Collection $roles
      * @return array
      */
     public function syncRoles($roles)
@@ -371,7 +371,7 @@ trait HasRoleAndPermission
     /**
      * Sync permissions for a user.
      *
-     * @param array|\Ultraware\Roles\Models\Permission[]|\Illuminate\Database\Eloquent\Collection $permissions
+     * @param array|\Marievych\Roles\Models\Permission[]|\Illuminate\Database\Eloquent\Collection $permissions
      * @return array
      */
     public function syncPermissions($permissions)
