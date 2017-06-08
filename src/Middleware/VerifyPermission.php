@@ -1,6 +1,6 @@
 <?php
 
-namespace Ultraware\Roles\Middleware;
+namespace Marievych\Roles\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
