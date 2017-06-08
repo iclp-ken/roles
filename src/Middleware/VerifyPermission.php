@@ -31,7 +31,7 @@ class VerifyPermission
      * @param \Closure $next
      * @param int|string $permission
      * @return mixed
-     * @throws \Ultraware\Roles\Exceptions\PermissionDeniedException
+     * @throws \Marievych\Roles\Exceptions\PermissionDeniedException
      */
     public function handle($request, Closure $next, $permission)
     {
