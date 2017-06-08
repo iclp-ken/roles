@@ -3,7 +3,7 @@
 namespace Marievych\Roles\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Ultraware\Roles\Contracts\PermissionHasRelations as PermissionHasRelationsContract;
+use Marievych\Roles\Contracts\PermissionHasRelations as PermissionHasRelationsContract;
 use Marievych\Roles\Traits\PermissionHasRelations;
 use Marievych\Roles\Traits\Slugable;
 
