@@ -150,7 +150,7 @@ trait HasRoleAndPermission
             return true;
         }
         $this->roles = null;
-        return $this->roles()->attach($role);
+        return $this->roles()->attach($role,['granted'=>true);
     }
 
     /**
