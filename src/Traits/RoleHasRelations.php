@@ -15,7 +15,7 @@ trait RoleHasRelations
      */
     public function permissions()
     {
-        return $this->belongsToMany(config('roles.models.permission'))->withTimestamps();
+        return $this->belongsToMany(config('roles.models.permission'))->withTimestamps()->withPivot('granted');
     }
 
     /**
@@ -66,9 +66,9 @@ trait RoleHasRelations
      * @param int|Permission $permission
      * @return int|bool
      */
-    public function attachPermission($permission)
+    public function attachPermission($permission, $granted = true)
     {
-        return (!$this->permissions()->get()->contains($permission)) ? $this->permissions()->attach($permission,['granted'=>true) : true;
+   return (!$this->permissions()->get()->contains($permission)) ? $this->permissions()->attach($permission, array('granted' => $granted)) : true;
     }
 
     /**
