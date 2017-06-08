@@ -64,7 +64,7 @@ interface HasRoleAndPermission
      * @param int|Role $role
      * @return null|bool
      */
-    public function attachRole($role);
+    public function attachRole($role, $granted = true);
 
     /**
      * Detach role from a user.
@@ -88,13 +88,6 @@ interface HasRoleAndPermission
      * @return array
      */
     public function syncRoles($roles);
-
-    /**
-     * Get role level of a user.
-     *
-     * @return int
-     */
-    public function level();
 
     /**
      * Get all permissions from roles.
@@ -167,7 +160,7 @@ interface HasRoleAndPermission
      * @param int|Permission $permission
      * @return null|bool
      */
-    public function attachPermission($permission);
+    public function attachPermission($permission, $granted = true);
 
     /**
      * Detach permission from a user.
