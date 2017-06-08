@@ -21,6 +21,31 @@ interface RoleHasRelations
      * @return BelongsToMany
      */
     public function users();
+    
+      /**
+     * Role belongs to parent role.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function parent();
+    /**
+     * Roles parent, grand parent, etc.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function ancestors();
+    /**
+     * Role has many children roles
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function children();
+    /**
+     * Roles children, grand children, etc.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function descendants();
 
     /**
      * Attach permission to a role.
@@ -28,7 +53,7 @@ interface RoleHasRelations
      * @param int|Permission $permission
      * @return int|bool
      */
-    public function attachPermission($permission);
+    public function attachPermission($permission, $granted = true);
 
     /**
      * Detach permission from a role.
