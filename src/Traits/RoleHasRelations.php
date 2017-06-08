@@ -68,17 +68,7 @@ trait RoleHasRelations
      */
     public function attachPermission($permission)
     {
-        return (!$this->permissions()->get()->contains($permission)) ? $this->permissions()->attach($permission) : true;
-    }
-    /**
-     * Attach permission to a role.
-     *
-     * @param int|Permission $permission
-     * @return int|bool
-     */
-    public function attachPermission($permission)
-    {
-        return (!$this->permissions()->get()->contains($permission)) ? $this->permissions()->attach($permission) : true;
+        return (!$this->permissions()->get()->contains($permission)) ? $this->permissions()->attach($permission,['granted'=>true) : true;
     }
 
     /**
