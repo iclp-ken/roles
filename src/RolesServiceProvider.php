@@ -2,7 +2,7 @@
 
 namespace Marievych\Roles;
 
-use Marievych\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 class RolesServiceProvider extends ServiceProvider
 {
