@@ -38,13 +38,37 @@ trait HasRoleAndPermission
     }
 
     /**
+     * Get only Granted Roles
+     */
+    public function grantedRoles() {
+        return $this->roles()->wherePivot('granted', true);
+    }
+    /**
+     * Get only Denied Roles
+     */
+    public function deniedRoles() {
+        return $this->roles()->wherePivot('granted', false);
+    }
+    /**
      * Get all roles as collection.
      *
      * @return Collection
      */
     public function getRoles()
     {
-        return (!$this->roles) ? $this->roles = $this->roles()->get() : $this->roles;
+        	    if (!$this->roles) {
+		    $this->roles = $this->grantedRoles()->get();
+		    $deniedRoles = $this->deniedRoles()->get();
+		    foreach ($deniedRoles as $role)
+			    $deniedRoles = $deniedRoles->merge($role->descendants());
+		    foreach ($this->roles as $role)
+			    if (!$deniedRoles->contains($role))
+				    $this->roles = $this->roles->merge($role->descendants());
+		    $this->roles = $this->roles->filter(function ($role) use ($deniedRoles) {
+			    return !$deniedRoles->contains($role);
+		    });
+	    }
+	    return $this->roles;
     }
 
     /**
@@ -168,16 +192,6 @@ trait HasRoleAndPermission
     }
 
     /**
-     * Get role level of a user.
-     *
-     * @return int
-     */
-    public function level()
-    {
-        return ($role = $this->getRoles()->sortByDesc('level')->first()) ? $role->level : 0;
-    }
-
-    /**
      * Get all permissions from roles.
      *
      * @return Builder
@@ -195,7 +209,6 @@ trait HasRoleAndPermission
             ->join('permission_role', 'permission_role.permission_id', '=', 'permissions.id')
             ->join('roles', 'roles.id', '=', 'permission_role.role_id')
             ->whereIn('roles.id', $this->getRoles()->pluck('id')->toArray())
-            ->orWhere('roles.level', '<', $this->level())
             ->groupBy(['permissions.id', 'permissions.name', 'permissions.slug', 'permissions.description', 'permissions.model', 'permissions.created_at', 'permissions.updated_at', 'permission_role.created_at', 'permission_role.updated_at']);
     }
 
