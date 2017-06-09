@@ -371,7 +371,7 @@ You can change connection for models, slug separator, models path and there is a
 
 ## More Information
 
-For more information, please have a look at [HasRoleAndPermission](https://github.com/Marievych/roles/blob/master/src/Contracts/HasRoleAndPermission.php) contract.
+For more information, please have a look at [HasRoleAndPermission](https://github.com/marievych/roles/blob/5.4/src/Traits/HasRoleAndPermission.php) contract.
 
 ## License
 
