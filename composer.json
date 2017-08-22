@@ -28,7 +28,7 @@
   "require-dev": {
     "orchestra/database": "3.5.*",
     "orchestra/testbench": "3.5.*",
-    "mockery/mockery": "^0.9.*",
+    "mockery/mockery": "^0.9.6",
     "phpunit/phpunit": "~6.0",
     "satooshi/php-coveralls": "1.0.*",
     "sebastian/environment": "2.0.*"
